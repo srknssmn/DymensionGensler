@@ -6,6 +6,8 @@ import Buyers from './components/Buyers';
 import {Contract} from './contracts/Contract';
 import { ethers } from "ethers";
 import MonsterPic from './images/gensler.png'
+import useSound from 'use-sound';
+import audio from './audio/ough.mp3'
 import { verifyNetwork } from './controllers/verifyNetwork';
 
 function App() {
@@ -66,11 +68,14 @@ function App() {
     setUserHit(ticketValue);    
   }
 
+  const [playSound] = useSound(audio);
+
   const kickMonster = async () => {
 
     try {
       await verifyNetwork();
       const txn = await monsterContract.kickMonster();
+      await playSound();
       await txn.wait();
       await console.log("success")
     } catch(error) {
