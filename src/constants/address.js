@@ -1,0 +1,1 @@
+export const RAFFLE_ADDRESS = "0x8fa4Ab96a6dDa759CCF81eFf59747E02dcc6aFc5";
